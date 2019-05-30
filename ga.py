@@ -1,3 +1,5 @@
+import cProfile
+
 import numpy as np, random, operator, pandas as pd, matplotlib.pyplot as plt
 
 
@@ -187,10 +189,10 @@ f = open('data/hard_0.ttp')
 for line in f:
 	cityList.append(City(x=float(line.split()[1]), y=float(line.split()[2])))
 
-
-#for i in range(0, 25):
+# for i in range(0, 25):
 #	cityList.append(City(x=int(random.random() * 200), y=int(random.random() * 200)))
 
-geneticAlgorithmPlot(population=cityList, popSize=100, eliteSize=10, mutationRate=0.001, generations=500)
+cProfile.run(
+	"geneticAlgorithmPlot(population=cityList, popSize=100, eliteSize=10, mutationRate=0.001, generations=13)")
 
 f.close()

@@ -1,6 +1,7 @@
 import numpy as np, random, operator, pandas as pd, matplotlib.pyplot as plt
 import cProfile
 
+
 class City:
 	def __init__(self, x, y):
 		self.x = x
@@ -116,7 +117,8 @@ def crossoverPopulation(matingpool, eliteSize, crossoverRate):
 		children.append(matingpool[i])
 
 	for i in range(0, length):
-		if (random.random() < crossoverRate):
+		rnd = random.uniform(0,1)
+		if (rnd < crossoverRate):
 			child = crossover(pool[i], pool[len(matingpool) - i - 1])
 			children.append(child)
 		else:
@@ -194,8 +196,8 @@ f = open('data/hard_0.ttp')
 for line in f:
 	cityList.append(City(x=int(line.split()[1]), y=int(line.split()[2])))
 
-
-cProfile.run('geneticAlgorithm(population=cityList, popSize=100, eliteSize=10, crossoverRate=0.7, mutationRate=0.001, generations=13)')
-#geneticAlgorithmPlot(population=cityList, popSize=100, eliteSize=10, crossoverRate=0.7, mutationRate=0.001, generations=500)
+cProfile.run(
+	'geneticAlgorithm(population=cityList, popSize=100, eliteSize=10, crossoverRate=0.7, mutationRate=0.001, generations=13)')
+# geneticAlgorithmPlot(population=cityList, popSize=100, eliteSize=10, crossoverRate=0.7, mutationRate=0.001, generations=13)
 
 f.close()
