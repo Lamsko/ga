@@ -138,3 +138,4 @@ for epoch in range(0, 100000):
 	                                                                                          1. / max_fitness,
 	                                                                                          max_chromosome))
 	population_list = crossed_ch
+
